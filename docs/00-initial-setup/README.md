@@ -45,7 +45,7 @@ Follow the steps below to create the set up resources (VPC, Cloud9 environment, 
 
 1. 	Click **Next**
 1. In the **Step 2: Specify stack details** page:
-	* name you stack ***`Secure-Serverless`***
+	* name you stack ***givlas-`Secure-Serverless`*** if your name is Given Last to differentiate your environment.
 	* for the database password, use ***`Corp123!`***
 	and click **Next**
 	
@@ -335,7 +335,7 @@ After doing this, it's time to test your API locally using SAM Local.
 
 1. Retrieve the name of the S3 bucket the CloudFormation stack has created earlier:
 
-	* If you still have the browser tab with the CloudFormation console open, go to the tab. Otherwise, in a separate browser tab, go to the CloudFormation console at [https://console.aws.amazon.com/cloudformation/home](https://console.aws.amazon.com/cloudformation/home) and select the `Secure-Serverless` stack.
+	* If you still have the browser tab with the CloudFormation console open, go to the tab. Otherwise, in a separate browser tab, go to the CloudFormation console at [https://console.aws.amazon.com/cloudformation/home](https://console.aws.amazon.com/cloudformation/home) and select the `givlas-Secure-Serverless` stack.
 
 	* In the **Output** tab, take note of **DeploymentS3Bucket**
 
@@ -361,10 +361,10 @@ After doing this, it's time to test your API locally using SAM Local.
 	aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET --output-template packaged.yaml
 	```
 
-1. Deploy the serverless API using the following command. Note that this template references the output from the setup CloudFormation stack (`Secure-Serverless`) for things like subnet IDs. 
+1. Deploy the serverless API using the following command. Note that this template references the output from the setup CloudFormation stack (`givlas-Secure-Serverless`) for things like subnet IDs. 
 
 	```
-	aws cloudformation deploy --template-file packaged.yaml --stack-name CustomizeUnicorns --region $REGION --capabilities CAPABILITY_IAM --parameter-overrides InitResourceStack=Secure-Serverless
+	aws cloudformation deploy --template-file packaged.yaml --stack-name givlas-CustomizeUnicorns --region $REGION --capabilities CAPABILITY_IAM --parameter-overrides InitResourceStack=givlas-Secure-Serverless
 	```
 
 1. Wait until you see the stack is successfully deployed:
@@ -380,7 +380,7 @@ After doing this, it's time to test your API locally using SAM Local.
 	To do it from commandline:
 
 	```
-	aws cloudformation describe-stacks --region $REGION --stack-name CustomizeUnicorns --query "Stacks[0].Outputs[0].OutputValue"
+	aws cloudformation describe-stacks --region $REGION --stack-name givlas-CustomizeUnicorns --query "Stacks[0].Outputs[0].OutputValue"
 	```
 
 	e.g.
