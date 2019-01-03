@@ -45,6 +45,7 @@ Follow the steps below to create the set up resources (VPC, Cloud9 environment, 
 1. In the **Step 2: Specify stack details** page:
 	* name you stack ***givlas-`Secure-Serverless`*** if your name is Given Last to differentiate your environment.
 	* for the database password, use ***`Corp123!`***
+	* as User fill out ***givlas** as above if your name is Given Last, to differentiate.
 	and click **Next**
 	
 		> Note: you can specify a different password here if you prefer. However, the password must be at least 8 character long.  And if you do this, you would later need to change the lambda function code in module-0D to use the password you specified in the `src/app/dbUtils.js` file.
